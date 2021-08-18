@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b18d7ee0-169c-4cad-8ec9-62a7d3b45a7a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diagramma classi.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/Diagramma classi.drawio" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +28,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/chefskiss" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -47,6 +47,8 @@
       <workItem from="1624098334301" duration="49000" />
       <workItem from="1626104566391" duration="4000" />
       <workItem from="1626104668135" duration="2747000" />
+      <workItem from="1629282664239" duration="64000" />
+      <workItem from="1629282767269" duration="25000" />
     </task>
     <servers />
   </component>
