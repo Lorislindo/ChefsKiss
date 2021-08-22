@@ -1,6 +1,6 @@
 <?php
 
-class php {
+class EPost {
     private $autore;
     private $domanda;
     private $categoria;
