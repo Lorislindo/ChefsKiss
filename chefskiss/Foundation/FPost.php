@@ -15,29 +15,29 @@ class FPost extends Fdb{
         $arrayCommentiEsistenti=$FCommento->loadCommenti($post->id);
         if ($arrayCommentiEsistenti != false) {
             foreach ($arrayCommentiEsistenti as $itemCommento) {
-                $FCommento->delete($itemCommento);
+                $FCommento->remove($itemCommento);
             }
         }
         $arrayCommenti=$post->getCommenti();
         foreach ($arrayCommenti as $commento) {
             $commento->id=$post->id;
-            $FCommento->store($commento);
+            $FCommento->insert($commento);
         }
     }
     
     public function load ($id): array {
         $post=parent::load($id);
         $FCommento=new FCommento();
-        $arrayCommenti=$FCommento->loadCommenti($post->id);
-        $post->_commento=$arrayCommenti;
+        $arrayCommenti=$FCommento->loadCommenti($post);
+        $post[0]->_commento=$arrayCommenti;
         return $post;
     }
     
     public function filterByCategorie(String $categoria){
         $query='SELECT * FROM post WHERE categoria:= ' .
             $categoria;
-        $this->query($query);
-        return $this->execQuery();
+        parent::createStatement($query);
+        return $this->execStatement();
     }
 }
 

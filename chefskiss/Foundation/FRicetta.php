@@ -19,39 +19,39 @@ class FRicetta extends Fdb {
         $arrayImmaginiEsistenti=$FImmagine->loadImmagini($ricetta->id);
         if ($arrayRecensioniEsistenti != false) {
             foreach ($arrayRecensioniEsistenti as $item) {
-                $FRecensione->delete($item);
+                $FRecensione->remove($item);
             }
         }
         $arrayRecensioni=$ricetta->getRecensioni();
         foreach ($arrayRecensioni as $recensione) {
             $recensione->id=$ricetta->id;
-            $FRecensione->store($recensione);
+            $FRecensione->insert($recensione);
         }
         if ($arrayImmaginiEsistenti != false) {
             foreach ($arrayImmaginiEsistenti as $item) {
-                $FImmagine->delete($item);
+                $FImmagine->remove($item);
             }
         }
         $arrayImmagini=$ricetta->getRecensioni();
         foreach ($arrayImmagini as $immagine) {
             $immagine->id=$ricetta->id;
-            $FImmagine->store($immagine);
+            $FImmagine->insert($immagine);
         }
     }
 
     public function load($id): array {
         $ricetta=parent::load($id);
         $FRecensione=new FRecensione();
-        $arrayRecensioni=$FRecensione->loadRecensioni($ricetta->id);
-        $ricetta->_recensione=$arrayRecensioni;
+        $arrayRecensioni=$FRecensione->loadRecensioni($ricetta);
+        $ricetta[0]->_recensione=$arrayRecensioni;
         return $ricetta;
     }
 
     public function filterByCategorie(String $categoria){
         $query='SELECT * FROM post WHERE categoria:= ' .
             $categoria;
-        $this->query($query);
-        return $this->execQuery();
+        $this->createStatement($query);
+        return $this->execStatement();
     }
 
 }

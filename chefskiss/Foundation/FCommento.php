@@ -17,7 +17,7 @@ class FCommento extends Fdb{
     public function loadCommenti($post){
         $parametri=array();
         $parametri[]=array('post','=',$post);
-        $arrayCommenti=parent::search($parametri);  //MANCA METODO SEARCH SU Fdb
+        $arrayCommenti=parent::search($parametri);
         return $arrayCommenti;
     }
 
