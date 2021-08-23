@@ -202,6 +202,13 @@ class Fdb
             return false;
     }
 
+    /**
+     * Cerca all'interno del database
+     * @param array $parametri
+     * @param string $ordinamento
+     * @param string $limite
+     * @return array|false
+     */
     public function search($parametri = array(), $ordinamento = '', $limite = ''){
         $filtro = '';
         for ($i=0; $i<count($parametri); $i++){
