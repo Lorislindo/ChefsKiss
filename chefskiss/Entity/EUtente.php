@@ -24,12 +24,12 @@ class EUtente
     }
 
     public function cancellaRicetta(ERicetta $ricetta){
-        unset($this->_ricette[array_keys($ricetta)]);
+        unset($this->_ricette[key($ricetta)]);
         array_values($this->_ricette);
     }
 
     public function cancellaPost(EPost $post){
-        unset($this->_post[array_keys($post)]);
+        unset($this->_post[key($post)]);
         array_values($this->_post);
     }
 

@@ -23,7 +23,7 @@ class Ericetta
     }
     
     public function removeComment(Erecensione $recensione){
-        unset($this->recensioni[array_keys($recensione)]);
+        unset($this->recensioni[key($recensione)]);
         array_values($this->recensioni);
         
     }

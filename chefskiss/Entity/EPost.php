@@ -15,8 +15,8 @@ class EPost {
     }
 
     public function removeComment(ECommento $commento, $_commenti){
-        unset($_commenti[array_keys($commento)]);
-        \array_values($_commenti);
+        unset($_commenti[key($commento)]);
+        array_values($_commenti);
 
     }
 

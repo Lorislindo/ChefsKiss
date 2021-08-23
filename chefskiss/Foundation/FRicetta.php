@@ -14,7 +14,9 @@ class FRicetta extends Fdb {
     public function insert($ricetta){
         parent::insert($ricetta);
         $FRecensione=new FRecensione();
+        $FImmagine=new FImmagine();
         $arrayRecensioniEsistenti=$FRecensione->loadRecensioni($ricetta->id);
+        $arrayImmaginiEsistenti=$FImmagine->loadImmagini($ricetta->id);
         if ($arrayRecensioniEsistenti != false) {
             foreach ($arrayRecensioniEsistenti as $item) {
                 $FRecensione->delete($item);
@@ -24,6 +26,16 @@ class FRicetta extends Fdb {
         foreach ($arrayRecensioni as $recensione) {
             $recensione->id=$ricetta->id;
             $FRecensione->store($recensione);
+        }
+        if ($arrayImmaginiEsistenti != false) {
+            foreach ($arrayImmaginiEsistenti as $item) {
+                $FImmagine->delete($item);
+            }
+        }
+        $arrayImmagini=$ricetta->getRecensioni();
+        foreach ($arrayImmagini as $immagine) {
+            $immagine->id=$ricetta->id;
+            $FImmagine->store($immagine);
         }
     }
 
