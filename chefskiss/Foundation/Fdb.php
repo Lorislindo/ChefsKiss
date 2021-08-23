@@ -23,9 +23,6 @@ class Fdb
      */
     private $_result;
 
-    /**
-     * @var $_key Variabile contenente la chiave della tabella
-     */
     protected $_key;
 
     /**
