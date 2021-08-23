@@ -4,22 +4,43 @@
 class Fdb
 {
     /**
-     * @var 
+     * @var $_connection Variabile che stabililsce la connessione col database
      */
     private  $_connection;
 
+    /**
+     * @var $_query Variabile che memorizza la query corrente
+     */
     private $_query;
 
+    /**
+     * @var $_stmt Variabile che memorizza l'istanza dello statement della connessione del database
+     */
     private $_stmt;
 
+    /**
+     * @var $_result Variabile che memorizza il risultato dell'esecuzione di uno statement
+     */
     private $_result;
 
+    /**
+     * @var $_key Variabile contenente la chiave della tabella
+     */
     protected $_key;
 
+    /**
+     * @var $_return_class Variabile contenente il tipo di classe da restituire
+     */
     protected $_return_class;
 
+    /**
+     * @var $_table Variabile contenente il nome della tabella
+     */
     protected $_table;
 
+    /**
+     * @var bool $_auto_increment Variabile che definisce l'esistenza o meno di una chiave automatica nella tabella corrente
+     */
     protected $_auto_increment = false;
 
     public function __construct()
