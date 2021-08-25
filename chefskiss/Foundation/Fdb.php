@@ -52,7 +52,7 @@ class Fdb
      */
     public function connect(){
         try{
-            $this->_connection = new PDO("mysql:host=127.0.0.1;dbname=chefkiss", 'root', 'pippo');
+            $this->_connection = new PDO("mysql:host=127.0.0.1;dbname=chefskiss", 'root', 'pippo');
         } catch (PDOException $e){
             print $e->getMessage();
         }

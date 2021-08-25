@@ -1,6 +1,6 @@
 <?php 
 
-class FModeratore extends Fdb{
+class FAmministratore extends Fdb{
     function __construct() {
         $this->_table='amministratore';
         $this->_key='id_amm';

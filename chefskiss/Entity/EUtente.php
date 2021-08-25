@@ -192,6 +192,4 @@ class EUtente
     {
         $this->_post = $post;
     }
-
-
 }

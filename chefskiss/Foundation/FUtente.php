@@ -1,5 +1,6 @@
 <?php
 
+
 class FUtente extends Fdb{
 
     public function __construct(){
