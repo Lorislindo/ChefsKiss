@@ -153,6 +153,20 @@ class Ericetta
         $this->foto = $foto;
     }
 
+    public function parseparam(){
+        return[
+            'ingredienti' => $this->getIngredienti(),
+            'procedimento' => $this->getProcedimento(),
+            'id' => $this->getId(),
+            'categoria' => $this->getCategoria(),
+            'data_pubblicazione' => $this->getData_pubblicazione(),
+            'recensioni' => $this->getRecensioni(),
+            'autore' => $this->getAutore(),
+            'foto' => $this->getFoto()
+    ];
+
+    }
+
     
     
 }

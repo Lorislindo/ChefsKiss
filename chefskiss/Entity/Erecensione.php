@@ -108,6 +108,16 @@ class Erecensione
     {
         $this->autore = $autore;
     }
+    public function pareseParam(){
+        return[
+            'commento' => $this->getCommento(),
+            'valutazione' => $this->getValutazione(),
+            'id' => $this->getId(),
+            'id_ricetta' => $this->getId_ricetta(),
+            'data_pubblicazione' => $this->getData_pubblicazione(),
+            'autore' =>$this->getAutore()
+            ];
+    }
 
     
     

@@ -1,109 +1,126 @@
 <?php
 
 class ECommento {
-    private $autore;
-    private $testo;
-    private $id_post;
-    private $id;
-    private $data;
+    private String $autore;
+    private String $testo;
+    private int $id_post;
+    private int $id;
+    private DateTime $data;
 
     /**
      * ECommento constructor.
-     * @param $autore
-     * @param $testo
-     * @param $id_post
-     * @param $id
-     * @param $data
      */
-    public function __construct($autore, $testo, $id_post, $id, $data)
-    {
-        $this->autore = $autore;
-        $this->testo = $testo;
-        $this->id_post = $id_post;
-        $this->id = $id;
-        $this->data = $data;
+    public function __construct(){}
+
+    public function parseparam(){
+        return[
+            'autore' => $this->getAutore(),
+            'testo' => $this->getTesto(),
+            'id' => $this->getId(),
+            'id_post' => $this->getId_post(),
+            'data_pubblicazione' => $this->getData(),
+    ];
+
     }
 
     /**
-     * @return mixed
-     */
-    public function getAutore()
-    {
-        return $this->autore;
-    }
-
-    /**
-     * @param mixed $autore
-     */
-    public function setAutore($autore): void
-    {
-        $this->autore = $autore;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTesto()
-    {
-        return $this->testo;
-    }
-
-    /**
-     * @param mixed $testo
-     */
-    public function setTesto($testo): void
-    {
-        $this->testo = $testo;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getIdPost()
-    {
-        return $this->id_post;
-    }
-
-    /**
-     * @param mixed $id_post
-     */
-    public function setIdPost($id_post): void
-    {
-        $this->id_post = $id_post;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param mixed $id
-     */
-    public function setId($id): void
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @return mixed
-     */
+     * Get the value of data
+     */ 
     public function getData()
     {
         return $this->data;
     }
 
     /**
-     * @param mixed $data
-     */
-    public function setData($data): void
+     * Set the value of data
+     *
+     * @return  self
+     */ 
+    public function setData($data)
     {
         $this->data = $data;
+
+        return $this;
     }
 
+    /**
+     * Get the value of id
+     */ 
+    public function getId()
+    {
+        return $this->id;
+    }
 
+    /**
+     * Set the value of id
+     *
+     * @return  self
+     */ 
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of id_post
+     */ 
+    public function getId_post()
+    {
+        return $this->id_post;
+    }
+
+    /**
+     * Set the value of id_post
+     *
+     * @return  self
+     */ 
+    public function setId_post($id_post)
+    {
+        $this->id_post = $id_post;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of testo
+     */ 
+    public function getTesto()
+    {
+        return $this->testo;
+    }
+
+    /**
+     * Set the value of testo
+     *
+     * @return  self
+     */ 
+    public function setTesto($testo)
+    {
+        $this->testo = $testo;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of autore
+     */ 
+    public function getAutore()
+    {
+        return $this->autore;
+    }
+
+    /**
+     * Set the value of autore
+     *
+     * @return  self
+     */ 
+    public function setAutore($autore)
+    {
+        $this->autore = $autore;
+
+        return $this;
+    }
 }
 ?>
