@@ -1,50 +1,56 @@
 <?php
 
-
 class Fdb
 {
     /**
-     * @var $_connection Variabile che stabililsce la connessione col database
+     * @var $_conn PDO Variabile che stabilisce la connessione con il database
      */
-    private  $_connection;
+    private $_conn;
 
-    /**
-     * @var $_query Variabile che memorizza la query corrente
-     */
+    private static $_instance = null;
+    /*
     private $_query;
 
     /**
-     * @var $_stmt Variabile che memorizza l'istanza dello statement della connessione del database
+     * @var $_stmt PDOStatement Variabile che memorizza l'istanza dello statement del DB
      */
+    /*
     private $_stmt;
 
-    /**
-     * @var $_result Variabile che memorizza il risultato dell'esecuzione di uno statement
-     */
     private $_result;
 
     protected $_key;
 
-    /**
-     * @var $_return_class Variabile contenente il tipo di classe da restituire
-     */
     protected $_return_class;
 
-    /**
-     * @var $_table Variabile contenente il nome della tabella
-     */
     protected $_table;
 
-    /**
-     * @var bool $_auto_increment Variabile che definisce l'esistenza o meno di una chiave automatica nella tabella corrente
-     */
     protected $_auto_increment = false;
+    */
 
-    public function __construct()
+    private function __construct()
     {
-        if (!$this->existConn()){
+        /*if (!$this->existConn()){
             $this->connect();
+        }*/
+
+        if (!$this->existConn()) {
+            try {
+                $this->_conn = new PDO("mysql:host=127.0.0.1;dbname=chefskiss", 'root', 'pippo');
+            } catch (PDOException $e) {
+                print $e->getMessage();
+            }
         }
+
+        if ($this->_conn!= null) echo 'connessione stabilita '.get_class($this->_conn);
+        var_dump($this->_conn);
+    }
+
+    public static function getInstance(){
+        if (self::$_instance == null) {
+            self::$_instance = new Fdb();
+        }
+        return self::$_instance;
     }
 
     /**
@@ -52,7 +58,8 @@ class Fdb
      */
     public function connect(){
         try{
-            $this->_connection = new PDO("mysql:host=127.0.0.1;dbname=chefkiss", 'root', 'pippo');
+            $this->_conn = new PDO("mysql:host=127.0.0.1;dbname=chefskiss", 'root', 'pippo');
+            if ($this->_conn != null) echo 'Connessione avviata';
         } catch (PDOException $e){
             print $e->getMessage();
         }
@@ -63,10 +70,10 @@ class Fdb
      * @return bool
      */
     public function existConn(): bool {
-        if($this->_connection != null){
+        if($this->_conn != null){
             return true;
-        }
-        return false;
+        } else
+            return false;
     }
 
     /**
@@ -76,11 +83,16 @@ class Fdb
      */
     public function createStatement(string $query)
     {
+        $this->_conn->beginTransaction();
         $this->_query = $query;
+        if ($this->_conn != null)
+            echo 'daje';
+        else
+            echo 'Non è stata stabilita una connessione ';
+        $this->_stmt = $this->_conn->prepare($this->_query);
         if (!$this->_query)
             return false;
         else
-            $this->_stmt = $this->_connection->preapare($this->_query);
             return true;
     }
 
@@ -92,7 +104,7 @@ class Fdb
     public function load(string $id) : array
     {
         $query = "SELECT * FROM $this->_table WHERE $this->_key = $id";
-        $result = $this->_connection->query($query)->fetchAll(PDO::FETCH_ASSOC);
+        $result = $this->_conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
 
@@ -101,9 +113,26 @@ class Fdb
      * @param $object
      * @return bool|mixed
      */
-    public function insert($object){
+    public function insertDb($class, $object){
 
-        $i = 0;
+        try {
+            $this->_conn->beginTransaction();
+            $query = "INSERT INTO " . $class::getTable() . " VALUES " . $class::getValues();
+            echo $query;
+            $stmt = $this->_conn->prepare($query);
+            $class::bind($stmt, $object);
+            $stmt->execute();
+            $id = $this->_conn->lastInsertId();
+            $this->_conn->commit();
+            $this->closeConn();
+            return $id;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            $this->_conn->rollBack();
+            return null;
+        }
+
+        /*$i = 0;
         $values='';
         $fields='';
         foreach ($object as $key=>$value) {
@@ -119,17 +148,25 @@ class Fdb
             }
         }
         $query='INSERT INTO '.$this->_table.' ('.$fields.') VALUES ('.$values.')';
-        $this->createStatement($query);
-        $return = $this->execStatement();
+        echo $query.' ';
+        echo $this->_table;
+        $this->_stmt = $this->_conn->prepare($query);
+        $return = $this->_stmt->execute();
+        $this->_conn->commit();
+        $this->closeConn();
         if ($this->_auto_increment) {
+            $this->_conn->beginTransaction();
             $query='SELECT LAST_INSERT_ID() AS `id`';
-            $this->createStatement($query);
-            $this->execStatement();
+            $this->_stmt = $this->_conn->prepare($query);
+            $this->_stmt->execute();
+            $this->_conn->commit();
+            $this->closeConn();
             $result=$this->getResult();
             return $result['id'];
         } else {
             return $return;
         }
+        */
 
     }
 
@@ -157,18 +194,18 @@ class Fdb
     {
         if ($this->_stmt != null) {
             $this->_result = $this->_stmt->execute();
-        }
-        if ($this->_result == null)
-            return false;
-        else
+            $this->_conn->commit();
+            $this->closeConn();
             return true;
+        } else
+            return false;
     }
 
     /**
      * Chiude la connessione con il database
      */
-    public function close(){
-        $this->_connection = null;
+    public function closeConn(){
+        static::$_instance = null;
     }
 
     /**

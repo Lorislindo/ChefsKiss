@@ -11,6 +11,7 @@ class EUtente
     private $nickname;
     private $data_iscrizione;
     private $ban;
+    private $privilegi;
 
     private $_ricette = array();
     private $_post = array();
@@ -31,6 +32,19 @@ class EUtente
     public function cancellaPost(EPost $post){
         unset($this->_post[key($post)]);
         array_values($this->_post);
+    }
+
+    public function parseParam(){
+        return [
+            'nome' => $this->getNome(),
+            'cognome' => $this->getCognome(),
+            'id' => $this->getId(),
+            'email' => $this->getEmail(),
+            'password' => $this->getPassword(),
+            'nickname' => $this->getNickname(),
+            'data_iscrizione' => $this->getDataIscrizione(),
+            'ban' => $this->getBan()
+        ];
     }
 
     /**
@@ -191,6 +205,22 @@ class EUtente
     public function setPost(array $post)
     {
         $this->_post = $post;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrivilegi()
+    {
+        return $this->privilegi;
+    }
+
+    /**
+     * @param mixed $privilegi
+     */
+    public function setPrivilegi($privilegi): void
+    {
+        $this->privilegi = $privilegi;
     }
 
 
