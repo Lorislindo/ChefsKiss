@@ -257,45 +257,44 @@ class Fdb
     }
 
     /**
-     * Restituisce un array di oggetti contenenti il risultato della query
-     * @return array|false
-     */
-    public function getArrayObject(){
-        $rowNumber = $this->_stmt->rowCount();
-        if ($rowNumber > 0){
-            $result = array();
-            while ($row = $this->_stmt->fetchObject($this->_return_class)){
-                $result[] = $row;
-            }
-            $this->_result = false;
-            return $result;
-        } else
-            return false;
-    }
-
-    /**
      * Cerca all'interno del database
      * @param array $parametri
      * @param string $ordinamento
      * @param string $limite
      * @return array|false
      */
-    public function search($parametri = array(), $ordinamento = '', $limite = ''){
+    public function searchDb($class, $parametri = array(), $ordinamento = '', $limite = ''){
         $filtro = '';
-        for ($i=0; $i<count($parametri); $i++){
-            if ($i>0) $filtro .= ' AND';
-            $filtro .= ' `'.$parametri[$i][0].'` '.$parametri[$i][1].' \''.$parametri[$i][2].'\'';
+        try {
+            for ($i = 0; $i < count($parametri); $i++) {
+                if ($i > 0) $filtro .= ' AND';
+                $filtro .= ' `' . $parametri[$i][0] . '` ' . $parametri[$i][1] . ' \'' . $parametri[$i][2] . '\'';
+            }
+            $query = 'SELECT * ' .
+                'FROM `' . $class::getTable() . '` ';
+            if ($filtro != '')
+                $query .= 'WHERE ' . $filtro . ' ';
+            if ($ordinamento != '')
+                $query .= 'ORDER BY ' . $ordinamento . ' ';
+            if ($limite != '')
+                $query .= 'LIMIT ' . $limite . ' ';
+            $stmt = $this->_conn->prepare($query);
+            $stmt->execute();
+            $numRow = $stmt->rowCount();
+            if ($numRow == 0){
+                $result = null;
+            } elseif ($numRow == 1) {
+                $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            } else {
+                $result = array();
+                $stmt->setFetchMode(PDO::FETCH_ASSOC);
+                while ($row = $stmt->fetch()) $result[] = $row;
+            }
+            return array($result, $numRow);
+        } catch (PDOException $e){
+            echo "Attenzione errore: " . $e->getMessage();
+            $this->_conn->rollBack();
+            return null;
         }
-        $query='SELECT * ' .
-            'FROM `'.$this->_table.'` ';
-        if ($filtro != '')
-            $query.='WHERE '.$filtro.' ';
-        if ($ordinamento!='')
-            $query.='ORDER BY '.$ordinamento.' ';
-        if ($limite != '')
-            $query.='LIMIT '.$limite.' ';
-        $this->createStatement($query);
-        $this->execStatement();
-        return $this->getArrayObject();
     }
 }

@@ -28,4 +28,9 @@ class FPersistentManager
         $ris = $Fclass::exist($field, $val);
         return $ris;
     }
+
+    public static function search($Fclass, $parametri=array(), $ordinamento='', $limite=''){
+        $result = $Fclass::search($parametri, $ordinamento, $limite);
+        return $result;
+    }
 }

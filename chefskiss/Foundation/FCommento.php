@@ -95,12 +95,18 @@ class FCommento extends Fdb{
         else return false;
     }
 
-    public function loadCommenti($post){
+    public static function search($parametri=array(), $ordinamento='', $limite=''){
+        $db = parent::getInstance();
+        $result = $db->searchDb(self::$class, $parametri, $ordinamento, $limite);
+        return $result;
+    }
+
+    /*public function loadCommenti($post){
         $parametri=array();
         $parametri[]=array('post','=',$post);
         $arrayCommenti=parent::search($parametri);
         return $arrayCommenti;
-    }
+    }*/
 
 }
 
