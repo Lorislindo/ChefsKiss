@@ -39,8 +39,8 @@ class FRicetta extends Fdb {
         }
     }
 
-    public function load($id): array {
-        $ricetta=parent::load($id);
+    public function loadDb($id): array {
+        $ricetta=parent::loadDb($id);
         $FRecensione=new FRecensione();
         $arrayRecensioni=$FRecensione->loadRecensioni($ricetta);
         $ricetta[0]->_recensione=$arrayRecensioni;

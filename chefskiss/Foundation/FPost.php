@@ -25,8 +25,8 @@ class FPost extends Fdb{
         }
     }
     
-    public function load ($id): array {
-        $post=parent::load($id);
+    public function loadDb ($id): array {
+        $post=parent::loadDb($id);
         $FCommento=new FCommento();
         $arrayCommenti=$FCommento->loadCommenti($post);
         $post[0]->_commento=$arrayCommenti;

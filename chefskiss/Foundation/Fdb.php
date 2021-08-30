@@ -8,6 +8,8 @@ class Fdb
     private $_conn;
 
     private static $_instance = null;
+
+    private static $class = 'Fdb';
     /*
     private $_query;
 
@@ -28,11 +30,8 @@ class Fdb
     protected $_auto_increment = false;
     */
 
-    private function __construct()
+    public function __construct()
     {
-        /*if (!$this->existConn()){
-            $this->connect();
-        }*/
 
         if (!$this->existConn()) {
             try {
@@ -42,27 +41,18 @@ class Fdb
             }
         }
 
-        if ($this->_conn!= null) echo 'connessione stabilita '.get_class($this->_conn);
+        if ($this->_conn!= null) echo 'connessione stabilita '. $this->_conn->errorInfo();
         var_dump($this->_conn);
     }
 
-    public static function getInstance(){
-        if (self::$_instance == null) {
-            self::$_instance = new Fdb();
-        }
-        return self::$_instance;
-    }
-
     /**
-     * Funzione che permette la connessione al server del database
+     * @return mixed|Fdb
      */
-    public function connect(){
-        try{
-            $this->_conn = new PDO("mysql:host=127.0.0.1;dbname=chefskiss", 'root', 'pippo');
-            if ($this->_conn != null) echo 'Connessione avviata';
-        } catch (PDOException $e){
-            print $e->getMessage();
+    public static function getInstance(){
+        if (USingleton::getInstance(self::$class) == null) {
+            USingleton::getInstance(self::$class);
         }
+        return USingleton::getInstance(self::$class);
     }
 
     /**
@@ -77,47 +67,52 @@ class Fdb
     }
 
     /**
-     * Questa funzione inizializza una query pronta per essere eseguita
-     * @param string $query
-     * @return bool
+     * Questa funzione carica in $result il risultato di una query. Può produrre sia risultati singoli
+     * che array di risultati (se le righe prodotte sono maggiori di una)
+     * @param $class
+     * @param $field
+     * @param $id
+     * @return array|mixed|null
      */
-    public function createStatement(string $query)
+    public function loadDb($class, $field, $id)
     {
-        $this->_conn->beginTransaction();
-        $this->_query = $query;
-        if ($this->_conn != null)
-            echo 'daje';
-        else
-            echo 'Non è stata stabilita una connessione ';
-        $this->_stmt = $this->_conn->prepare($this->_query);
-        if (!$this->_query)
-            return false;
-        else
-            return true;
-    }
-
-    /**
-     * Questa funzione serve a prelevare dati dal database e caricarli sul programma
-     * @param string $id
-     * @return array
-     */
-    public function load(string $id) : array
-    {
-        $query = "SELECT * FROM $this->_table WHERE $this->_key = $id";
-        $result = $this->_conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
-        return $result;
+        try {
+            // $this->db->beginTransaction();
+            $query = "SELECT * FROM " . $class::getTable() . " WHERE " . $field . "='" . $id . "';";
+            echo $query;
+            $stmt = $this->_conn->prepare($query);
+            $stmt->execute();
+            $num = $stmt->rowCount();
+            if ($num == 0) {
+                $result = null;        //nessuna riga interessata. return null
+            } elseif ($num == 1) {                          //nel caso in cui una sola riga fosse interessata
+                $result = $stmt->fetch(PDO::FETCH_ASSOC);   //ritorna una sola riga
+            } else {
+                $result = array();                         //nel caso in cui piu' righe fossero interessate
+                $stmt->setFetchMode(PDO::FETCH_ASSOC);   //imposta la modalità di fetch come array associativo
+                while ($row = $stmt->fetch())
+                    $result[] = $row;                    //ritorna un array di righe.
+            }
+            //  $this->closeDbConnection();
+            return $result;
+        } catch (PDOException $e) {
+            echo "Attenzione errore: " . $e->getMessage();
+            $this->_conn->rollBack();
+            return null;
+        }
     }
 
     /**
      * Questa funzione serve ad inserire i dati di una nuova istanza di un oggetto all'interno del database
      * @param $object
+     * @param $class
      * @return bool|mixed
      */
     public function insertDb($class, $object){
 
         try {
             $this->_conn->beginTransaction();
-            $query = "INSERT INTO " . $class::getTable() . " VALUES " . $class::getValues();
+            $query = "INSERT INTO " . $class::getTable() . " " . str_replace(array(':', ',', ')'), array('`', '`,', '`)'), $class::getValues()) . " VALUES " . $class::getValues();
             echo $query;
             $stmt = $this->_conn->prepare($query);
             $class::bind($stmt, $object);
@@ -132,42 +127,46 @@ class Fdb
             return null;
         }
 
-        /*$i = 0;
-        $values='';
-        $fields='';
-        foreach ($object as $key=>$value) {
-            if (!($this->_auto_increment && $key == $this->_key) && substr($key, 0, 1)!='_') {
-                if ($i==0) {
-                    $fields.='`'.$key.'`';
-                    $values.='\''.$value.'\'';
-                } else {
-                    $fields.=', `'.$key.'`';
-                    $values.=', \''.$value.'\'';
-                }
-                $i++;
-            }
-        }
-        $query='INSERT INTO '.$this->_table.' ('.$fields.') VALUES ('.$values.')';
-        echo $query.' ';
-        echo $this->_table;
-        $this->_stmt = $this->_conn->prepare($query);
-        $return = $this->_stmt->execute();
-        $this->_conn->commit();
-        $this->closeConn();
-        if ($this->_auto_increment) {
+    }
+
+    public function updateDB ($class, $field, $newvalue, $pk, $id)
+    {
+        try {
             $this->_conn->beginTransaction();
-            $query='SELECT LAST_INSERT_ID() AS `id`';
-            $this->_stmt = $this->_conn->prepare($query);
-            $this->_stmt->execute();
+            $query = "UPDATE " . $class::getTable() . " SET " . $field . "='" . $newvalue . "' WHERE " . $pk . "='" . $id . "';";
+            $stmt = $this->_conn->prepare($query);
+            $stmt->execute();
             $this->_conn->commit();
             $this->closeConn();
-            $result=$this->getResult();
-            return $result['id'];
-        } else {
-            return $return;
+            return true;
+        } catch (PDOException $e) {
+            echo "Attenzione errore: " . $e->getMessage();
+            $this->_conn->rollBack();
+            return false;
         }
-        */
+    }
 
+    /**
+     * Questa funzione verifica quante righe sono state prodotte da una determinata query
+     * @param $class
+     * @param $field
+     * @param $id
+     * @return int|null
+     */
+    public function getRowNum($class, $field, $id){
+        try {
+            $this->_conn->beginTransaction();
+            $query = "SELECT * FROM " . $class::getTable() . " WHERE " . $field . "='" . $id . "';";
+            $stmt = $this->_conn->prepare($query);
+            $stmt->execute();
+            $num = $stmt->rowCount();
+            $this->closeConn();
+            return $num;
+        } catch (PDOException $e) {
+            echo "Attenzione errore: " . $e->getMessage();
+            $this->db->rollBack();
+            return null;
+        }
     }
 
     /**
@@ -175,30 +174,47 @@ class Fdb
      * @param $object
      * @return bool
      */
-    public function remove($object){
-
-        $arrayObject = get_object_vars($object);
-        $query = 'DELETE ' .
-                'FROM `'.$this->_table.'` ' .
-                'WHERE `'.$this->_key.'` = \''.$arrayObject[$this->_key].'\'';
-        unset($object);
-        $this->createStatement($query);
-        return $this->execStatement();
+    public function deleteDB ($class, $field, $id)
+    {
+        try {
+            $result = null;
+            $this->_conn->beginTransaction();
+            $esiste = $this->existDB($class, $field, $id);
+            if ($esiste) {
+                $query = "DELETE FROM " . $class::getTable() . " WHERE " . $field . "='" . $id . "';";
+                $stmt = $this->_conn->prepare($query);
+                $stmt->execute();
+                $this->_conn->commit();
+                $this->closeConn();
+                $result = true;
+            }
+        } catch (PDOException $e) {
+            echo "Attenzione errore: " . $e->getMessage();
+            $this->db->rollBack();
+            //return false;
+        }
+        return $result;
     }
 
     /**
      * Funzione che esegue la query precedentemente istanziata
      * @return bool
      */
-    public function execStatement()
+
+    public function existDB ($class, $field, $id)
     {
-        if ($this->_stmt != null) {
-            $this->_result = $this->_stmt->execute();
-            $this->_conn->commit();
+        try {
+            $query = "SELECT * FROM " . $class::getTable() . " WHERE " . $field . "='" . $id . "'";
+            $stmt = $this->_conn->prepare($query);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            if (count($result) == 1) return $result[0];  //rimane solo l'array interno
+            else if (count($result) > 1) return $result;  //resituisce array di array
             $this->closeConn();
-            return true;
-        } else
-            return false;
+        } catch (PDOException $e) {
+            echo "Attenzione errore: " . $e->getMessage();
+            return null;
+        }
     }
 
     /**

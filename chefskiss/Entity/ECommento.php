@@ -1,16 +1,22 @@
 <?php
 
 class ECommento {
-    private String $autore;
-    private String $testo;
-    private int $id_post;
-    private int $id;
-    private DateTime $data;
+
+    private $autore;
+    private $testo;
+    private $id_post;
+    private $id;
+    private $data;
 
     /**
      * ECommento constructor.
      */
-    public function __construct(){}
+    public function __construct($id_post=null, $autore=null, $testo=null, $data=null){
+        $this->id_post = $id_post;
+        $this->autore = $autore;
+        $this->testo = $testo;
+        $this->data = $data;
+    }
 
     public function parseparam(){
         return[
@@ -36,7 +42,7 @@ class ECommento {
      *
      * @return  self
      */ 
-    public function setData($data)
+    public function setData(string $data)
     {
         $this->data = $data;
 
@@ -56,7 +62,7 @@ class ECommento {
      *
      * @return  self
      */ 
-    public function setId($id)
+    public function setId(int $id)
     {
         $this->id = $id;
 
@@ -76,7 +82,7 @@ class ECommento {
      *
      * @return  self
      */ 
-    public function setId_post($id_post)
+    public function setId_post(int $id_post)
     {
         $this->id_post = $id_post;
 
@@ -96,7 +102,7 @@ class ECommento {
      *
      * @return  self
      */ 
-    public function setTesto($testo)
+    public function setTesto(string $testo)
     {
         $this->testo = $testo;
 
@@ -116,7 +122,7 @@ class ECommento {
      *
      * @return  self
      */ 
-    public function setAutore($autore)
+    public function setAutore(int $autore)
     {
         $this->autore = $autore;
 
