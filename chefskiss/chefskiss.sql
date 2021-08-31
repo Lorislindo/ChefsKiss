@@ -48,7 +48,7 @@ CREATE TABLE `commento` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `immagini`
+-- Struttura della tabella `assets`
 --
 
 CREATE TABLE `immagini` (
@@ -150,7 +150,7 @@ ALTER TABLE `commento`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indici per le tabelle `immagini`
+-- Indici per le tabelle `assets`
 --
 ALTER TABLE `immagini`
   ADD PRIMARY KEY (`id`);
@@ -197,7 +197,7 @@ ALTER TABLE `commento`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `immagini`
+-- AUTO_INCREMENT per la tabella `assets`
 --
 ALTER TABLE `immagini`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;

@@ -2,7 +2,7 @@
 
 class FImmagine extends Fdb{
     public function __construct(){
-        $this->_table='immagini';
+        $this->_table='assets';
         $this->_key='id';
         $this->_auto_increment=true;
         $this->_return_class='EImmagine';
