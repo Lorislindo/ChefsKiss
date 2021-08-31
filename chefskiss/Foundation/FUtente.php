@@ -55,7 +55,7 @@ class FUtente extends Fdb{
         $stmt->bindValue(':password', $user->getPassword(), PDO::PARAM_STR);
         $stmt->bindValue(':nickname', $user->getNickname(), PDO::PARAM_STR);
         $stmt->bindValue(':data_iscrizione', $user->getDataIscrizione(), PDO::PARAM_STR);
-        $stmt->bindValue(':ban', $user->getBan(), PDO::PARAM_INT);
+        $stmt->bindValue(':ban', $user->getBan(), PDO::PARAM_BOOL);
         $stmt->bindValue(':id', $user->getId(), PDO::PARAM_INT);
         $stmt->bindValue(':privilegi', $user->getPrivilegi(), PDO::PARAM_INT);
 

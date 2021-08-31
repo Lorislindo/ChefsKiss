@@ -101,12 +101,12 @@ class FPost extends Fdb{
         return $result;
     }
 
-    /*public function filterByCategorie(String $categoria){
-        $query='SELECT * FROM post WHERE categoria:= ' .
-            $categoria;
-        parent::createStatement($query);
-        return $this->execStatement();
-    }*/
+    public function filterByCategorie(String $categoria){
+        $db = parent::getInstance();
+        $result = $db->searchDB(self::class, array('categoria', '=', $categoria));
+        return $result;
+    }
+
 }
 
 ?>

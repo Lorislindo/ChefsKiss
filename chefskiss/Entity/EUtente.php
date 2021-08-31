@@ -13,9 +13,6 @@ class EUtente
     private $ban;
     private $privilegi;
 
-    private $_ricette = array();
-    private $_post = array();
-
     /**
      * @param $nome
      * @param $cognome
@@ -38,25 +35,6 @@ class EUtente
         $this->data_iscrizione = $data_iscrizione;
         $this->ban = $ban;
         $this->privilegi = $privilegi;
-    }
-
-
-    public function aggiungiRicetta(ERicetta $ricetta){
-        array_push($this->_ricette, $ricetta);
-    }
-
-    public function aggiungiPost(EPost $post){
-        array_push($this->_post, $post);
-    }
-
-    public function cancellaRicetta(ERicetta $ricetta){
-        unset($this->_ricette[key($ricetta)]);
-        array_values($this->_ricette);
-    }
-
-    public function cancellaPost(EPost $post){
-        unset($this->_post[key($post)]);
-        array_values($this->_post);
     }
 
     public function parseParam(){
@@ -198,38 +176,6 @@ class EUtente
     public function setBan($ban)
     {
         $this->ban = $ban;
-    }
-
-    /**
-     * @return array
-     */
-    public function getRicette(): array
-    {
-        return $this->_ricette;
-    }
-
-    /**
-     * @param array $ricette
-     */
-    public function setRicette(array $ricette)
-    {
-        $this->_ricette = $ricette;
-    }
-
-    /**
-     * @return array
-     */
-    public function getPost(): array
-    {
-        return $this->_post;
-    }
-
-    /**
-     * @param array $post
-     */
-    public function setPost(array $post)
-    {
-        $this->_post = $post;
     }
 
     /**

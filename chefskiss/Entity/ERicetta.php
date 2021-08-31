@@ -8,9 +8,7 @@ class ERicetta
     private $id;
     private $categoria;
     private $data_pubblicazione;
-    private $recensioni;
     private $autore;
-    private $foto;
 
     /**
      * @param string $ingredienti
@@ -18,29 +16,16 @@ class ERicetta
      * @param int $id
      * @param string $categoria
      * @param DateTime $data_pubblicazione
-     * @param array $recensioni
      * @param int $autore
-     * @param array $foto
      */
-    public function __construct($ingredienti=null, $procedimento=null, $categoria=null, $data_pubblicazione=null, $autore=null)
+    public function __construct($ingredienti=null, $procedimento=null, $id=null, $categoria=null, $data_pubblicazione=null, $autore=null)
     {
         $this->ingredienti = $ingredienti;
         $this->procedimento = $procedimento;
         $this->categoria = $categoria;
+        $this->id = $id;
         $this->data_pubblicazione = $data_pubblicazione;
         $this->autore = $autore;
-    }
-
-
-    public function addComment(ERecensione $recensione){
-        array_push($this ->
-            recensioni, $recensione);
-    }
-    
-    public function removeComment(ERecensione $recensione){
-        unset($this->recensioni[key($recensione)]);
-        array_values($this->recensioni);
-        
     }
     
     public function getIngredienti()
@@ -83,25 +68,9 @@ class ERicetta
     /**
      * @return mixed
      */
-    public function getRecensioni()
-    {
-        return $this->recensioni;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getAutore()
     {
         return $this->autore;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getFoto()
-    {
-        return $this->foto;
     }
 
     /**
@@ -145,27 +114,11 @@ class ERicetta
     }
 
     /**
-     * @param mixed $recensioni
-     */
-    public function setRecensioni($recensioni)
-    {
-        $this->recensioni = $recensioni;
-    }
-
-    /**
      * @param mixed $autore
      */
     public function setAutore($autore)
     {
         $this->autore = $autore;
-    }
-
-    /**
-     * @param mixed $foto
-     */
-    public function setFoto($foto)
-    {
-        $this->foto = $foto;
     }
 
     public function parseparam(){
@@ -175,10 +128,8 @@ class ERicetta
             'id' => $this->getId(),
             'categoria' => $this->getCategoria(),
             'data_pubblicazione' => $this->getData_pubblicazione(),
-            'recensioni' => $this->getRecensioni(),
             'autore' => $this->getAutore(),
-            'foto' => $this->getFoto()
-    ];
+        ];
 
     }
 
