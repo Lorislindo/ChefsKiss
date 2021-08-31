@@ -5,7 +5,7 @@ class FRecensione extends Fdb{
         $this->_table='recensione';
         $this->_key='id';
         $this->_auto_increment=true;
-        $this->_return_class='Erecensione';
+        $this->_return_class='ERecensione';
         USingleton::getInstance('Fdb');
 
     }

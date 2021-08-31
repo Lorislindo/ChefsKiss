@@ -1,6 +1,6 @@
 <?php
 
-class Ericetta
+class ERicetta
 {
     
     private $ingredienti;
@@ -22,25 +22,22 @@ class Ericetta
      * @param int $autore
      * @param array $foto
      */
-    public function __construct($ingredienti=null, $procedimento=null, $id=null, $categoria=null, $data_pubblicazione=null, $recensioni=null, $autore=null, $foto=null)
+    public function __construct($ingredienti=null, $procedimento=null, $categoria=null, $data_pubblicazione=null, $autore=null)
     {
         $this->ingredienti = $ingredienti;
         $this->procedimento = $procedimento;
-        $this->id = $id;
         $this->categoria = $categoria;
         $this->data_pubblicazione = $data_pubblicazione;
-        $this->recensioni = $recensioni;
         $this->autore = $autore;
-        $this->foto = $foto;
     }
 
 
-    public function addComment(Erecensione $recensione){
+    public function addComment(ERecensione $recensione){
         array_push($this ->
             recensioni, $recensione);
     }
     
-    public function removeComment(Erecensione $recensione){
+    public function removeComment(ERecensione $recensione){
         unset($this->recensioni[key($recensione)]);
         array_values($this->recensioni);
         

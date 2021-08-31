@@ -1,6 +1,6 @@
 <?php
 
-class Erecensione
+class ERecensione
 {
     
     private $commento;

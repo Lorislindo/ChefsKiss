@@ -51,6 +51,7 @@ class FCommento extends Fdb{
         $db = parent::getInstance();
         $id = $db->insertDb(self::$class, $object);
         $object->setId($id);
+        return $id;
     }
 
     public static function loadByField($field, $val){
@@ -100,13 +101,6 @@ class FCommento extends Fdb{
         $result = $db->searchDb(self::$class, $parametri, $ordinamento, $limite);
         return $result;
     }
-
-    /*public function loadCommenti($post){
-        $parametri=array();
-        $parametri[]=array('post','=',$post);
-        $arrayCommenti=parent::search($parametri);
-        return $arrayCommenti;
-    }*/
 
 }
 
