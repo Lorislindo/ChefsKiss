@@ -7,8 +7,6 @@ class EPost {
     private $id;
     private $data_pubb;
 
-    public  $_commenti = array();
-
     /**
      * @param $autore
      * @param $domanda
@@ -17,26 +15,13 @@ class EPost {
      * @param $data_pubb
      * @param array $_commenti
      */
-    public function __construct($autore=null, $domanda=null, $categoria=null, $id=null, $data_pubb=null, array $_commenti=array())
+    public function __construct($autore=null, $domanda=null, $categoria=null, $id=null, $data_pubb=null)
     {
         $this->autore = $autore;
         $this->domanda = $domanda;
         $this->categoria = $categoria;
         $this->id = $id;
         $this->data_pubb = $data_pubb;
-        $this->_commenti = $_commenti;
-    }
-
-
-    public function addComment(ECommento $commento){
-        array_push($this ->_commenti, $commento);
-        if($this->id != null) $commento->setAutore($this->id);
-    }
-
-    public function removeComment(ECommento $commento, $_commenti){
-        unset($_commenti[key($commento)]);
-        array_values($_commenti);
-
     }
 
     public function parseparam(){
