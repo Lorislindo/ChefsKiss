@@ -5,6 +5,15 @@ class EModeratore extends EUtente
 {
     private $id;
 
+    /**
+     * @param $id
+     */
+    public function __construct($id=null)
+    {
+        $this->id = $id;
+    }
+
+
     public function banUtente(EUtente $utente, Date $tempo_ban){
 
     }

@@ -3,20 +3,38 @@
 class Ericetta
 {
     
-    private string $ingredienti;
-    private string $procedimento;
-    private int $id;
-    private string $categoria;
-    private DateTime $data_pubblicazione;
-    private array $recensioni;
-    private int $autore;
-    private array $foto;
+    private $ingredienti;
+    private $procedimento;
+    private $id;
+    private $categoria;
+    private $data_pubblicazione;
+    private $recensioni;
+    private $autore;
+    private $foto;
 
-    public function __construct(){}
     /**
-     * @return mixed
+     * @param string $ingredienti
+     * @param string $procedimento
+     * @param int $id
+     * @param string $categoria
+     * @param DateTime $data_pubblicazione
+     * @param array $recensioni
+     * @param int $autore
+     * @param array $foto
      */
-    
+    public function __construct($ingredienti=null, $procedimento=null, $id=null, $categoria=null, $data_pubblicazione=null, $recensioni=null, $autore=null, $foto=null)
+    {
+        $this->ingredienti = $ingredienti;
+        $this->procedimento = $procedimento;
+        $this->id = $id;
+        $this->categoria = $categoria;
+        $this->data_pubblicazione = $data_pubblicazione;
+        $this->recensioni = $recensioni;
+        $this->autore = $autore;
+        $this->foto = $foto;
+    }
+
+
     public function addComment(Erecensione $recensione){
         array_push($this ->
             recensioni, $recensione);

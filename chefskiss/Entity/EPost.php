@@ -1,13 +1,31 @@
 <?php
 
 class EPost {
-    private String $autore;
-    private String $domanda;
-    private String $categoria;
-    private int $id;
-    private DateTime $data_pubb;
+    private $autore;
+    private $domanda;
+    private $categoria;
+    private $id;
+    private $data_pubb;
 
     public  $_commenti = array();
+
+    /**
+     * @param $autore
+     * @param $domanda
+     * @param $categoria
+     * @param $id
+     * @param $data_pubb
+     * @param array $_commenti
+     */
+    public function __construct($autore=null, $domanda=null, $categoria=null, $id=null, $data_pubb=null, array $_commenti=array())
+    {
+        $this->autore = $autore;
+        $this->domanda = $domanda;
+        $this->categoria = $categoria;
+        $this->id = $id;
+        $this->data_pubb = $data_pubb;
+        $this->_commenti = $_commenti;
+    }
 
 
     public function addComment(ECommento $commento){

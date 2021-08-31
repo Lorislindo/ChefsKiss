@@ -16,6 +16,31 @@ class EUtente
     private $_ricette = array();
     private $_post = array();
 
+    /**
+     * @param $nome
+     * @param $cognome
+     * @param $id
+     * @param $email
+     * @param $password
+     * @param $nickname
+     * @param $data_iscrizione
+     * @param $ban
+     * @param $privilegi
+     */
+    public function __construct($nome=null, $cognome=null, $id, $email=null, $password=null, $nickname=null, $data_iscrizione=null, $ban=null, $privilegi=null)
+    {
+        $this->nome = $nome;
+        $this->cognome = $cognome;
+        $this->id = $id;
+        $this->email = $email;
+        $this->password = $password;
+        $this->nickname = $nickname;
+        $this->data_iscrizione = $data_iscrizione;
+        $this->ban = $ban;
+        $this->privilegi = $privilegi;
+    }
+
+
     public function aggiungiRicetta(ERicetta $ricetta){
         array_push($this->_ricette, $ricetta);
     }

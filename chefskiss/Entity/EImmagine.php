@@ -2,13 +2,28 @@
 
 class EImmagine{
 
-    private int $id;
-    private string $nome;
-    private string $dimensione;
-    private string $tipo;
+    private $id;
+    private $nome;
+    private $dimensione;
+    private $tipo;
     private $immagine;
 
-    public function __construct(){}
+    /**
+     * @param $id
+     * @param $nome
+     * @param $dimensione
+     * @param $tipo
+     * @param $immagine
+     */
+    public function __construct($id=null, $nome=null, $dimensione=null, $tipo=null, $immagine=null)
+    {
+        $this->id = $id;
+        $this->nome = $nome;
+        $this->dimensione = $dimensione;
+        $this->tipo = $tipo;
+        $this->immagine = $immagine;
+    }
+
 
     /**
      * Get the value of id

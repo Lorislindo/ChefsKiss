@@ -3,19 +3,32 @@
 class Erecensione
 {
     
-    private string $commento;
-    private int $valutazione;
-    private int $id;
-    private int $id_ricetta;
-    private DateTime $data_pubblicazione;
-    private string $autore;
+    private $commento;
+    private $valutazione;
+    private $id;
+    private $id_ricetta;
+    private $data_pubblicazione;
+    private $autore;
 
-    public function __construct(){}
     /**
-     * @return mixed
+     * @param $commento
+     * @param $valutazione
+     * @param $id
+     * @param $id_ricetta
+     * @param $data_pubblicazione
+     * @param $autore
      */
-    
-    
+    public function __construct($commento=null, $valutazione=null, $id=null, $id_ricetta=null, $data_pubblicazione=null, $autore=null)
+    {
+        $this->commento = $commento;
+        $this->valutazione = $valutazione;
+        $this->id = $id;
+        $this->id_ricetta = $id_ricetta;
+        $this->data_pubblicazione = $data_pubblicazione;
+        $this->autore = $autore;
+    }
+
+
     public function getCommento()
     {
         return $this->commento;
