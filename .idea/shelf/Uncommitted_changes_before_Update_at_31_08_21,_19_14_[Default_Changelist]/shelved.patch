@@ -1,0 +1,195 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"b18d7ee0-169c-4cad-8ec9-62a7d3b45a7a\" name=\"Default Changelist\" comment=\"\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"ComposerSettings\">\n    <execution />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"ProjectId\" id=\"1uA7psy1C20qrJzzESp2fGkSUru\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\n    <ConfirmationsSetting value=\"1\" id=\"Add\" />\n  </component>\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">\n    <property name=\"ASKED_ADD_EXTERNAL_FILES\" value=\"true\" />\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/chefskiss\" />\n    <property name=\"node.js.detected.package.eslint\" value=\"true\" />\n    <property name=\"node.js.detected.package.tslint\" value=\"true\" />\n    <property name=\"node.js.selected.package.eslint\" value=\"(autodetect)\" />\n    <property name=\"node.js.selected.package.tslint\" value=\"(autodetect)\" />\n    <property name=\"vue.rearranger.settings.migration\" value=\"true\" />\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"b18d7ee0-169c-4cad-8ec9-62a7d3b45a7a\" name=\"Default Changelist\" comment=\"\" />\n      <created>1624096726185</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1624096726185</updated>\n      <workItem from=\"1624096728073\" duration=\"1560000\" />\n      <workItem from=\"1624098334301\" duration=\"49000\" />\n      <workItem from=\"1626104566391\" duration=\"4000\" />\n      <workItem from=\"1626104668135\" duration=\"2747000\" />\n      <workItem from=\"1629282664239\" duration=\"64000\" />\n      <workItem from=\"1629282767269\" duration=\"25000\" />\n    </task>\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision c30dfb7e83831c77cabcd343d7a103660551f11f)
++++ b/.idea/workspace.xml	(date 1630429786785)
+@@ -1,8 +1,15 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
++  <component name="AutoImportSettings">
++    <option name="autoReloadType" value="SELECTIVE" />
++  </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="b18d7ee0-169c-4cad-8ec9-62a7d3b45a7a" name="Default Changelist" comment="">
++    <list default="true" id="b18d7ee0-169c-4cad-8ec9-62a7d3b45a7a" name="Default Changelist" comment="metodi classi f">
++      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/chefskiss/Controller/CPostaRicetta.php" beforeDir="false" afterPath="$PROJECT_DIR$/chefskiss/Controller/CPostaRicetta.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/chefskiss/Foundation/FImmagine.php" beforeDir="false" afterPath="$PROJECT_DIR$/chefskiss/Foundation/FImmagine.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/chefskiss/chefskiss.sql" beforeDir="false" afterPath="$PROJECT_DIR$/chefskiss/chefskiss.sql" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -13,8 +20,14 @@
+     <execution />
+   </component>
+   <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="branchGabriele" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
++  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
+   <component name="ProjectId" id="1uA7psy1C20qrJzzESp2fGkSUru" />
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+     <ConfirmationsSetting value="1" id="Add" />
+@@ -25,15 +38,36 @@
+   </component>
+   <component name="PropertiesComponent">
+     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
++    <property name="DatabaseDriversLRU" value="mariadb" />
+     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+     <property name="WebServerToolWindowFactoryState" value="false" />
++    <property name="com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary" value="PHPUnit" />
+     <property name="last_opened_file_path" value="$PROJECT_DIR$/chefskiss" />
+     <property name="node.js.detected.package.eslint" value="true" />
+     <property name="node.js.detected.package.tslint" value="true" />
+     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+     <property name="node.js.selected.package.tslint" value="(autodetect)" />
++    <property name="nodejs_package_manager_path" value="npm" />
+     <property name="vue.rearranger.settings.migration" value="true" />
++  </component>
++  <component name="RecentsManager">
++    <key name="MoveFile.RECENT_KEYS">
++      <recent name="$PROJECT_DIR$/chefskiss/smarty/libs/templates" />
++      <recent name="$PROJECT_DIR$/chefskiss/smarty/libs/html" />
++      <recent name="$PROJECT_DIR$/chefskiss" />
++    </key>
++  </component>
++  <component name="RunManager">
++    <configuration name="FdbTest.testInsert" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
++      <TestRunner class="FdbTest" file="$PROJECT_DIR$/FdbTest.php" method="testInsert" scope="Method" />
++      <method v="2" />
++    </configuration>
++    <recent_temporary>
++      <list>
++        <item itemvalue="PHPUnit.FdbTest.testInsert" />
++      </list>
++    </recent_temporary>
+   </component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+@@ -46,13 +80,113 @@
+       <workItem from="1624096728073" duration="1560000" />
+       <workItem from="1624098334301" duration="49000" />
+       <workItem from="1626104566391" duration="4000" />
+-      <workItem from="1626104668135" duration="2747000" />
++      <workItem from="1626104668135" duration="6994000" />
++      <workItem from="1628616477652" duration="401000" />
++      <workItem from="1628616934399" duration="596000" />
++      <workItem from="1629294616268" duration="2860000" />
++      <workItem from="1629710081634" duration="19397000" />
++      <workItem from="1629908683744" duration="21576000" />
++      <workItem from="1630350692209" duration="14227000" />
++    </task>
++    <task id="LOCAL-00001" summary="entity utente, moderatore, amministratore">
++      <created>1626171346085</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1626171346085</updated>
+       <workItem from="1629282664239" duration="64000" />
+       <workItem from="1629282767269" duration="25000" />
+     </task>
++    <task id="LOCAL-00002" summary="db manager">
++      <created>1629727270624</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1629727270624</updated>
++    </task>
++    <task id="LOCAL-00003" summary="db manager">
++      <created>1629727454999</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1629727454999</updated>
++    </task>
++    <task id="LOCAL-00004" summary="db manager">
++      <created>1629728047921</created>
++      <option name="number" value="00004" />
++      <option name="presentableId" value="LOCAL-00004" />
++      <option name="project" value="LOCAL" />
++      <updated>1629728047921</updated>
++    </task>
++    <task id="LOCAL-00005" summary="db manager">
++      <created>1629728232921</created>
++      <option name="number" value="00005" />
++      <option name="presentableId" value="LOCAL-00005" />
++      <option name="project" value="LOCAL" />
++      <updated>1629728232921</updated>
++    </task>
++    <task id="LOCAL-00006" summary="commit stupido">
++      <created>1630190144079</created>
++      <option name="number" value="00006" />
++      <option name="presentableId" value="LOCAL-00006" />
++      <option name="project" value="LOCAL" />
++      <updated>1630190144079</updated>
++    </task>
++    <task id="LOCAL-00007" summary="database manager con metodi funzionanti">
++      <created>1630365950104</created>
++      <option name="number" value="00007" />
++      <option name="presentableId" value="LOCAL-00007" />
++      <option name="project" value="LOCAL" />
++      <updated>1630365950105</updated>
++    </task>
++    <task id="LOCAL-00008" summary="update metodo search">
++      <created>1630367949563</created>
++      <option name="number" value="00008" />
++      <option name="presentableId" value="LOCAL-00008" />
++      <option name="project" value="LOCAL" />
++      <updated>1630367949563</updated>
++    </task>
++    <task id="LOCAL-00009" summary="cambiamenti costruttore classi entity">
++      <created>1630419262720</created>
++      <option name="number" value="00009" />
++      <option name="presentableId" value="LOCAL-00009" />
++      <option name="project" value="LOCAL" />
++      <updated>1630419262720</updated>
++    </task>
++    <task id="LOCAL-00010" summary="metodi classi f">
++      <created>1630425844003</created>
++      <option name="number" value="00010" />
++      <option name="presentableId" value="LOCAL-00010" />
++      <option name="project" value="LOCAL" />
++      <updated>1630425844003</updated>
++    </task>
++    <option name="localTasksCounter" value="11" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+     <option name="version" value="3" />
+   </component>
++  <component name="Vcs.Log.Tabs.Properties">
++    <option name="TAB_STATES">
++      <map>
++        <entry key="MAIN">
++          <value>
++            <State />
++          </value>
++        </entry>
++      </map>
++    </option>
++    <option name="oldMeFiltersMigrated" value="true" />
++  </component>
++  <component name="VcsManagerConfiguration">
++    <MESSAGE value="entity utente, moderatore, amministratore" />
++    <MESSAGE value="db manager (bozza)" />
++    <MESSAGE value="db manager" />
++    <MESSAGE value="commit stupido" />
++    <MESSAGE value="database manager con metodi funzionanti" />
++    <MESSAGE value="update metodo search" />
++    <MESSAGE value="cambiamenti costruttore classi entity" />
++    <MESSAGE value="metodi classi f" />
++    <option name="LAST_COMMIT_MESSAGE" value="metodi classi f" />
++  </component>
+ </project>
+\ No newline at end of file
