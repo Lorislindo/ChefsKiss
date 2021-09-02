@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Modern Business - Start Bootstrap Template</title>
+        <title>Chef's Kiss - Ricette e Forum</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -26,12 +26,12 @@
                             <!--<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>-->
                             <li class="nav-item"><a class="nav-link" href="contact.tpl">Contact</a></li>
                             <!--<li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>-->
-                            <li class="nav-item"><a class="nav-link" href="faq1.tpl">Forum</a></li>
-                            <li class="nav-item"><a class="nav-link" href="blog-home.tpl">Ricette</a></li>
+                            <li class="nav-item"><a class="nav-link" href="forum.tpl">Forum</a></li>
+                            <li class="nav-item"><a class="nav-link" href="ricette.tpl">Ricette</a></li>
                             <!--<li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Blog</a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                                    <li><a class="dropdown-item" href="blog-home.tpl">Blog Home</a></li>
+                                    <li><a class="dropdown-item" href="ricette.tpl">Blog Home</a></li>
                                     <li><a class="dropdown-item" href="blog-post.tpl">Blog Post</a></li>
                                 </ul>
                             </li>
@@ -50,38 +50,46 @@
             <header class="bg-dark py-5">
                 <div class="container px-5">
                     <div class="row gx-5 align-items-center justify-content-center">
-                        <div class="col-lg-8 col-xl-7 col-xxl-6">
-                            <div class="my-5 text-center text-xl-start">
-                                <h1 class="display-5 fw-bolder text-white mb-2">A Bootstrap 5 template for modern businesses</h1>
-                                <p class="lead fw-normal text-white-50 mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit!</p>
-                                <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                                    <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">Get Started</a>
-                                    <a class="btn btn-outline-light btn-lg px-4" href="#!">Learn More</a>
+                        <div class="bd-example">
+                            <div id="carouselExampleCaptions" class="carousel slide " data-ride="carousel">
+                              <ol class="carousel-indicators">
+                                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                                <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                              </ol>
+                              <div class="carousel-inner">
+                                <div class="carousel-item active" data-interval="5000">
+                                  <img src="https://dummyimage.com/400x200/343a40/6c757d" class="d-block w-100" alt="...">
+                                  <div class="carousel-caption d-none d-md-block">
+                                    <h2>{$Nome_Ricetta1}</h2>
+                                    <h3>{$Descrizione_Ricetta1}</h3>
+                                  </div>
                                 </div>
+                                <div class="carousel-item" data-interval="5000">
+                                  <img src="https://dummyimage.com/400x200/343a40/6c757d" class="d-block w-100" alt="...">
+                                  <div class="carousel-caption d-none d-md-block">
+                                    <h2>{$Nome_Ricetta2}</h2>
+                                    <h3>{$Descrizione_Ricetta2}</h3>
+                                  </div>
+                                </div>
+                                <div class="carousel-item" data-interval="5000">
+                                  <img src="https://dummyimage.com/600x400/343a40/6c757d" class="d-block w-100" alt="...">
+                                  <div class="carousel-caption d-none d-md-block">
+                                    <h2>{$Nome_Ricetta2}</h2>
+                                    <h3>{$Descrizione_Ricetta2}</h3>
+                                  </div>
+                                </div>
+                              </div>
+                              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                              </button>
+                              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                              </button>
                             </div>
                         </div>
-                        <!--<div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." /></div>-->
-                        <div id="carouselExampleInterval" class="carousel slide col-xl-5 col-xxl-6 d-none d-xl-block text-center" data-bs-ride="carousel">
-                            <div class="carousel-inner">
-                              <div class="carousel-item active" data-bs-interval="5000">
-                                <img src="https://dummyimage.com/600x400/343a40/6c757d" class="d-block w-100" alt="...">
-                              </div>
-                              <div class="carousel-item" data-bs-interval="5000">
-                                <img src="https://dummyimage.com/600x400/343a40/6c757d" class="d-block w-100" alt="...">
-                              </div>
-                              <div class="carousel-item" data-bs-interval="5000">
-                                <img src="https://dummyimage.com/600x400/343a40/6c757d" class="d-block w-100" alt="...">
-                              </div>
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                              <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                              <span class="visually-hidden">Next</span>
-                            </button>
-                          </div>
                     </div>
                 </div>
             </header>

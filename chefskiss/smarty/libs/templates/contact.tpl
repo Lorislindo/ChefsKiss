@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content />
         <meta name="author" content />
-        <title>Modern Business - Start Bootstrap Template</title>
+        <title>Chef's Kiss - Forum e Ricette</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -26,12 +26,12 @@
                             <!--<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>-->
                             <li class="nav-item"><a class="nav-link" href="contact.tpl">Contact</a></li>
                             <!--<li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>-->
-                            <li class="nav-item"><a class="nav-link" href="faq1.tpl">Forum</a></li>
-                            <li class="nav-item"><a class="nav-link" href="blog-home.tpl">Ricette</a></li>
+                            <li class="nav-item"><a class="nav-link" href="forum.tpl">Forum</a></li>
+                            <li class="nav-item"><a class="nav-link" href="ricette.tpl">Ricette</a></li>
                             <!--<li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Blog</a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                                    <li><a class="dropdown-item" href="blog-home.tpl">Blog Home</a></li>
+                                    <li><a class="dropdown-item" href="ricette.tpl">Blog Home</a></li>
                                     <li><a class="dropdown-item" href="blog-post.tpl">Blog Post</a></li>
                                 </ul>
                             </li>
