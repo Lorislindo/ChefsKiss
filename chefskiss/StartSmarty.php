@@ -6,10 +6,10 @@ class StartSmarty
 {
     static function configuration(){
         $smarty=new Smarty();
-        $smarty->template_dir='/smarty/templates';
-        $smarty->compile_dir='/smarty/templates_c/';
-        $smarty->config_dir='/smarty/configs/';
-        $smarty->cache_dir='/smarty/cache/';
+        $smarty->template_dir= $_SERVER['DOCUMENT_ROOT'].'/templates';
+        $smarty->compile_dir= $_SERVER['DOCUMENT_ROOT'].'/templates_c';
+        $smarty->config_dir=$_SERVER['DOCUMENT_ROOT'].'/configs';
+        $smarty->cache_dir=$_SERVER['DOCUMENT_ROOT'].'/cache';
         return $smarty;
     }
 }
