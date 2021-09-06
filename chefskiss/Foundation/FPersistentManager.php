@@ -16,6 +16,11 @@ class FPersistentManager
         return $ris;
     }
 
+    public static function loadLogin($user, $pass){
+        $ris = FUtente::loadLogin($user, $pass);
+        return $ris;
+    }
+
     public static function update($field, $newvalue, $pk, $val,$Fclass){
         return $Fclass::update($field, $newvalue, $pk, $val);
     }

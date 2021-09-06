@@ -103,8 +103,33 @@ class Fdb
     }
 
     /**
-     * Questa funzione serve ad inserire i dati di una nuova istanza di un oggetto all'interno del database
-     * @param $object
+     * Verifica l'accesso di un utente, controllando le credenziali (email e password) siano presenti nel db
+     * @param $email
+     * @param $pass
+     * @return mixed|null
+     */
+    public function checkIfLogged($email, $pass){
+        try {
+            $class = 'FUtente';
+            $query = 'SELECT * FROM ' . $class::getTable() . " WHERE email ='" . $email . "' AND password ='" . $pass . "';";
+            $stmt = $this->_conn->prepare($query);
+            $stmt->execute();
+            $num = $stmt->rowCount();
+            if ($num == 0) {
+                $result = null;
+            } else {
+                $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            }
+            return $result;
+        } catch (PDOException $e){
+            echo "Attenzione errore: " . $e->getMessage();
+            $this->_conn->rollBack();
+            return null;
+        }
+    }
+
+    /**
+res     * @param $object
      * @param $class
      * @return bool|mixed
      */

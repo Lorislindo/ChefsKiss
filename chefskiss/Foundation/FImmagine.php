@@ -65,7 +65,8 @@ class FImmagine extends Fdb{
             if(($result != null) && ($rows_number > 1)){
                 $immagine = array();
                 for($i = 0; $i < count($result); $i++){
-                    $immagine[] = new EImmagine($result['nome'], $result['dimensione'], $result['tipo'], $result['immagine'], $result['id_ricetta'], $result['id_post']);
+                    $immagine[] = new EImmagine($result[$i]['nome'], $result[$i]['dimensione'], $result[$i]['tipo'], $result[$i]['immagine'],
+                        $result[$i]['id_ricetta'], $result[$i]['id_post']);
                     $immagine[$i]->setId($result[$i]['id']);
                 }
             }

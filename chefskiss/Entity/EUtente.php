@@ -10,6 +10,7 @@ class EUtente
     private $password;
     private $nickname;
     private $data_iscrizione;
+    private $data_fine_ban;
     private $ban;
     private $privilegi;
 
@@ -24,7 +25,7 @@ class EUtente
      * @param $ban
      * @param $privilegi
      */
-    public function __construct($nome=null, $cognome=null, $id, $email=null, $password=null, $nickname=null, $data_iscrizione=null, $ban=null, $privilegi=null)
+    public function __construct($nome=null, $cognome=null, $id, $email=null, $password=null, $nickname=null, $data_iscrizione=null, $data_fine_ban = null, $ban=false, $privilegi=null)
     {
         $this->nome = $nome;
         $this->cognome = $cognome;
@@ -35,6 +36,7 @@ class EUtente
         $this->data_iscrizione = $data_iscrizione;
         $this->ban = $ban;
         $this->privilegi = $privilegi;
+        $data_fine_ban = $data_fine_ban;
     }
 
     public function parseParam(){
@@ -165,7 +167,7 @@ class EUtente
     /**
      * @return mixed
      */
-    public function getBan()
+    public function getBan() :bool
     {
         return $this->ban;
     }
@@ -192,6 +194,22 @@ class EUtente
     public function setPrivilegi($privilegi): void
     {
         $this->privilegi = $privilegi;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDataFineBan()
+    {
+        return $this->data_fine_ban;
+    }
+
+    /**
+     * @param mixed $data_fine_ban
+     */
+    public function setDataFineBan($data_fine_ban): void
+    {
+        $this->data_fine_ban = $data_fine_ban;
     }
 
 

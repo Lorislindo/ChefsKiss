@@ -71,7 +71,10 @@ class FdbTest
 
 $ft = new FdbTest();
 //$ft->testInsert();
-$ft->testDelete();
+//$ft->testDelete();
 //$ft->testUpdate();
 var_dump($ft->testSearch());
+foreach ($ft->testSearch()[0] as $key => $value) {
+    echo $key;
+}
 var_dump($ft->testLoad());

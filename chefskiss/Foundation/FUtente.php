@@ -68,14 +68,14 @@ class FUtente extends Fdb{
         $rows_number = $db->getRowNum(static::getClass(), $field, $val);
         if(($result != null) && ($rows_number == 1)) {
             $utente = new EUtente($result['nome'], $result['cognome'], $result['email'], $result['password'],
-                                    $result['nickname'], $result['data_iscrizione'], $result['ban'], $result['id'], $result['privilegi']);
+                                    $result['nickname'], $result['data_iscrizione'], $result['data_fine_ban'], $result['ban'], $result['id'], $result['privilegi']);
         }
         else {
             if(($result != null) && ($rows_number > 1)){
                 $utente = array();
                 for($i = 0; $i < count($result); $i++){
-                    $utente = new EUtente($result['nome'], $result['cognome'], $result['email'], $result['password'],
-                                    $result['nickname'], $result['data_iscrizione'], $result['ban'], $result['id'], $result['privilegi']);
+                    $utente = new EUtente($result[$i]['nome'], $result[$i]['cognome'], $result[$i]['email'], $result[$i]['password'],
+                                    $result[$i]['nickname'], $result[$i]['data_iscrizione'], $result[$i]['data_fine_ban'], $result[$i]['ban'], $result[$i]['id'], $result[$i]['privilegi']);
                 }
             }
         }
@@ -107,6 +107,16 @@ class FUtente extends Fdb{
         $db = parent::getInstance();
         $result = $db->searchDb(self::$class, $parametri, $ordinamento, $limite);
         return $result;
+    }
+
+    public static function loadLogin($user, $pass){
+        $utente = null;
+        $db = Fdb::getInstance();
+        $result = $db->checkIfLogged($user, $pass);
+        if (isset($result)){
+            $utente = self::loadByField('email', $result['email']);
+        }
+        return $utente;
     }
 }
 ?>
