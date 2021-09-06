@@ -19,7 +19,6 @@ class CFrontController
 
         if ($resource[0] != 'api'){
 
-            echo $resource[1];
             $controller = 'C' . $resource[0];
             $dir = 'Controller';
             $elementDir = scandir($dir);
