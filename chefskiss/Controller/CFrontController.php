@@ -19,7 +19,7 @@ class CFrontController
 
         if ($resource[0] != 'api'){
 
-            echo $resource[1];
+            //echo $resource[1];
             $controller = 'C' . $resource[0];
             $dir = 'Controller';
             $elementDir = scandir($dir);
@@ -66,7 +66,6 @@ class CFrontController
                     }
                 }
             } else {
-                echo 'sono qui';
                 if (CUtente::isLogged()){
                     $utente = unserialize($_SESSION['utente']);
                     if ($utente->getEmail() == 'admin@admin.com'){
@@ -75,7 +74,6 @@ class CFrontController
                         CUtente::login();
                     }
                 } else {
-                    echo 'sono anche qui';
                     CUtente::login();
                 }
             }

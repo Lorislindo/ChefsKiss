@@ -1,6 +1,6 @@
 <?php
 
-require_once '../StartSmarty.php';
+//require_once '../StartSmarty.php';
 
 class VUtente
 {
@@ -13,7 +13,7 @@ class VUtente
     }
 
     public function showFormLogin(){
-        $this->smarty->display('login_form.tpl');
+        $this->smarty->display('./smarty/libs/templates/login_form.tpl');
     }
 
     public function loginOk(){

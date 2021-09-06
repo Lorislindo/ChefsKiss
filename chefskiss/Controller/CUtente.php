@@ -13,7 +13,6 @@ class CUtente
                 $view->loginOk();
             }
             else{
-                echo ' sono di nuovo qui';
                 $view=new VUtente();
                 $view->showFormLogin();
             }
