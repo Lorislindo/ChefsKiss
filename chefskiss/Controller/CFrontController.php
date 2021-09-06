@@ -9,6 +9,7 @@ class CFrontController
 
     public function run($path){
 
+        $method = $_SERVER['REQUEST_METHOD'];
 
         $resource = explode('/', $path);
 
@@ -65,7 +66,6 @@ class CFrontController
                     }
                 }
             } else {
-                echo 'sono qui';
                 if (CUtente::isLogged()){
                     $utente = unserialize($_SESSION['utente']);
                     if ($utente->getEmail() == 'admin@admin.com'){
@@ -74,7 +74,6 @@ class CFrontController
                         CUtente::login();
                     }
                 } else {
-                    echo 'sono anche qui';
                     CUtente::login();
                 }
             }

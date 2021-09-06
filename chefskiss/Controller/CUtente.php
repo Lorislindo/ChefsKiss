@@ -26,17 +26,19 @@ class CUtente
         $utente = $pm->loadLogin($_POST['email'], $_POST['password']);
         if ($utente != null && $utente->getBan() != true){
             if (session_status() == PHP_SESSION_NONE){
-                session_start();
+                $session = USingleton::getInstance('USession');
                 $savableData = serialize($utente);
-                $_SESSION['utente'] = $savableData;
-                if ($_POST['email'] != 'admin@admin.com'){
+                $privilegi = $utente->getPrivilegi();
+                $session->setValue('privilegi', $privilegi);
+                $session->setValue('utente', $savableData);
+                if ($privilegi == 1){ //accesso con privilegi base (utente)
                     if (isset($_COOKIE['home']))
                         setcookie('home', null, time() - 900, '/');
                     else
-                        header('Location: /chefkiss/');
+                        header('Location: ../chefskiss/');
                 }
-                else {
-                    header('Location: /chefkiss/Admin/homepage');
+                else { //accesso con privilegi maggiori (moderatore o amministratore)
+                    header('Location: ../Chefskiss/chefskiss/Admin/homepage');
                 }
             }
         } else {
