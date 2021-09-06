@@ -2,6 +2,8 @@
 
 //require_once 'chefskiss/StartSmarty.php';
 
+//require_once '../autoload.php';
+
 class CFrontController
 {
 
@@ -10,6 +12,7 @@ class CFrontController
 
         $resource = explode('/', $path);
 
+        array_shift($resource);
         array_shift($resource);
         array_shift($resource);
         array_shift($resource);
@@ -63,6 +66,7 @@ class CFrontController
                     }
                 }
             } else {
+                echo 'sono qui';
                 if (CUtente::isLogged()){
                     $utente = unserialize($_SESSION['utente']);
                     if ($utente->getEmail() == 'admin@admin.com'){
@@ -71,6 +75,7 @@ class CFrontController
                         CUtente::login();
                     }
                 } else {
+                    echo 'sono anche qui';
                     CUtente::login();
                 }
             }

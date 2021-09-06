@@ -1,5 +1,7 @@
 <?php
 
+require_once '../StartSmarty.php';
+
 class VUtente
 {
 
